@@ -73,4 +73,6 @@ export const types={
     detailProject: "[interface] open modal detail project",
     deleteLider: "[interface] open modal delete lider",
     detailLider: "[interface] open modal detail Lider",
+
+    createDirector : "[interface] open modal crear director",
 };

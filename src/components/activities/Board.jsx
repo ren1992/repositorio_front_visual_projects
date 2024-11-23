@@ -43,7 +43,7 @@ const Board = (props) => {
       minimumFractionDigits: 2,
     }).format(number);
   };
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const {
     projectLeader,
@@ -107,7 +107,11 @@ const Board = (props) => {
     apisEjecut();
   }, [props.idActividad]);*/
 
-  
+  useEffect(() => {
+    setTimeout(() => {
+    setLoading(false);
+  }, 900); 
+  }, [presupuestoMeta]);
 
   useEffect(() => {
     const updatedColumns = {
@@ -298,7 +302,7 @@ const Board = (props) => {
       await dispatch(actualizarEstadoMeta(metaEstado));
       await dispatch(consultarPresupuestoMeta(goal.id));
       await dispatch(consultarActividadesMetas(goal.id));
-      setLoading(false);
+      //setLoading(true);
       newColumns[endColumn.id] = { ...endColumn, taskIds: endTaskIds };
       newColumns[endColumn.id].totalActividades += 1; // Sumar la actividad a la columna de destino
       setColumns(newColumns);
@@ -318,20 +322,7 @@ const Board = (props) => {
 
   return (
     <>
-      {loading ? (
-        <div
-          className="subtitle-home"
-          style={{
-            fontSize: 50,
-            marginTop: "13rem",
-            marginLeft: "25rem",
-            width: "75%",
-          }}
-        >
-          {" "}
-          Cargando tareas ...
-        </div>
-      ) : (
+  
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="board" direction="horizontal">
             {(provided) => (
@@ -495,7 +486,6 @@ const Board = (props) => {
             )}
           </Droppable>
         </DragDropContext>
-      )}
       <ModalDetailTask task={task && task} />
       {task && <ModalEliminarTarea task={task && task} />}
     </>

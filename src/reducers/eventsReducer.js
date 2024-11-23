@@ -398,6 +398,13 @@ export const eventsReducer = (state = initialState, action) => {
         detailLiders: action.payload,
       };
 
+      case types.createDirector:
+        return {
+          ...state,
+          createDirectors: action.payload,
+        }; 
+
+
     default:
       return state;
   }

@@ -47,7 +47,7 @@ export const Planification = () => {
 
   const handleAddPlaneation = () => {
     if (objectiveProyect !== "") {
-      if (budgetProyect !== "") {
+      if (budgetProyect !== "" && !isNaN(budgetProyect)) {
         let data = {
             planeacion:{
                 idProyecto:projectLeader&& projectLeader[0].idProyecto,
@@ -63,7 +63,7 @@ export const Planification = () => {
           navigate("/Metas");
         }
       } else {
-        alert.error("Ingresa el presupuesto del proyecto");
+        alert.error("Ingresa un presupuesto válido (solo números)");
       }
     } else {
       alert.error("Ingresa el obetivo del proyecto");

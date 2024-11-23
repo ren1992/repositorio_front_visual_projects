@@ -16,7 +16,8 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import { BiRename } from "react-icons/bi";
 import {
   actualizarProjecto,
-  consultarProyectos
+  consultarProyectos,
+  consultarProyectosDirector
 } from "../../actions/apis";
 import {
   consutarLideres,
@@ -61,6 +62,7 @@ export const ModalDetailProject = (props) => {
     projectLeader,
     meta,
     project,
+    user,
     detailProjects
   } = useSelector((state) => state);
 
@@ -83,7 +85,7 @@ export const ModalDetailProject = (props) => {
       },
     };
     await dispatch(actualizarProjecto(proyecto));
-    await dispatch(consultarProyectos())
+    await  dispatch(consultarProyectosDirector(user?.directors[0].idDirector));
     dispatch(modalDetailProject(false));
     setformValues({
       ...formValues,

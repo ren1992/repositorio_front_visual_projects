@@ -43,7 +43,7 @@ import { useAlert } from "react-alert";
  * Consultas a las Apis
  */
 
-//export const urlServer = "https://b6bd-181-50-11-30.ngrok-free.app/api";
+//export const urlServer = "http://localhost:4000/api";
 export const urlServer = "https://nodejs-4xci-production.up.railway.app/api";
 /**
  * Peticion para consultar todos los lideres
@@ -147,6 +147,28 @@ export const crearLider = (lider) => {
       });
   };
 };
+
+export const crearDirector = (director) => {
+  return async (dispatch) => {
+    await axios({
+      method: "post",
+      url: urlServer + "/crear/director",
+      headers: {
+        "Access-Control-Allow-Credentials": true,
+        "ngrok-skip-browser-warning": "69420"
+      },
+      data: director,
+    })
+      .then((resJson) => {
+        //dispatch(consutarLideres());
+        Swal.fire("Listo", "Director creado correctamente", "success");
+      })
+      .catch((error) => {
+        Swal.fire("Error", error.response.data.msg, "error");
+      });
+  };
+};
+
 
 /**
  * Peticion para crear un nuevo proyecto

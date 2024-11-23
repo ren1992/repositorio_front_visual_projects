@@ -66,7 +66,7 @@ const CardMetas = (props) => {
           style={{ color: "#F5F7AF", marginLeft: "2rem" }}
         >
           {" "}
-          Meta {props.id}
+          Meta 
         </h1>
         {user?.liders[0] ?<div
           className="button-detail-task"

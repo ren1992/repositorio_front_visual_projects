@@ -346,6 +346,12 @@ export const modalDetailLider = (event) => ({
 });
 
 
+export const modalCreateDirector = (event) => ({
+  type: types.createDirector,
+  payload: event,
+});
+
+
 
 
 

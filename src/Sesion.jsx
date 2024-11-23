@@ -3,11 +3,12 @@ import "./css/sesion.css";
 import liderProyecto from "./img/liderProyecto.png";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { AddUserToStorange } from "./actions/events";
+import { AddUserToStorange, modalCreateDirector } from "./actions/events";
 import { useDispatch } from "react-redux";
 import { MdOutlineEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { urlServer} from "./actions/apis";
+import { ModalCrearDirector } from "./components/modals/ModalCrearDirector";
 //const urlServer = "http://localhost:4000/api";
 //const urlServer = "https://4921-181-62-56-160.ngrok-free.app/api";
 export const Sesion = () => {
@@ -64,6 +65,10 @@ export const Sesion = () => {
     } else {
        login(email, password);
     }
+  };
+
+  const handleDirector = async () => {
+    dispatch(modalCreateDirector(true))
   };
 
   return (
@@ -156,6 +161,19 @@ export const Sesion = () => {
                     >
                       Inciar sesión
                     </button>
+
+                    <button
+                      className="btn"
+                      style={{
+                        background: "#f84306",
+                        color: "white",
+                        marginTop: "2rem",
+                        marginLeft:"1rem"
+                      }}
+                      onClick={handleDirector}
+                    >
+                      Registrar director
+                    </button>
                   </div>
                 </div>
               </div>
@@ -163,6 +181,7 @@ export const Sesion = () => {
           </div>
         </div>
       </div>
+      <ModalCrearDirector/>
     </>
   );
 };

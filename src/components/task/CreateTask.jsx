@@ -178,20 +178,39 @@ export const CreateTask = () => {
   }
 
   const handleCreateTask = () => {
-    nameTask !== ""
-      ? descriptionTask !== ""
-        ? dateInital !== null
-          ? DateFinish !== null
-            ? budgetTask !== ""
-              ? selectedRowValue !== null
-                ? createTask()
-                : alert.error("Seleccione un responsable para esta actividad")
-              : alert.error("Ingresa el presupuesto de la actividad")
-            : alert.error("Ingresa la fecha final")
-          : alert.error("Ingresa la fecha inicial")
-        : alert.error("Ingresa la descripción de la actividad")
-      : alert.error("Ingresa el nombre de la actividad");
-  };
+    if (nameTask !== "") {
+        if (descriptionTask !== "") {
+            if (dateInital !== null) {
+                if (DateFinish !== null) {
+                    if (new Date(dateInital) <= new Date(DateFinish)) {
+                        if (budgetTask !== "" && !isNaN(budgetTask)) {
+                            if (selectedRowValue !== null) {
+                                createTask();
+                            } else {
+                                alert.error("Seleccione un responsable para esta tarea");
+                            }
+                        } else {
+                            alert.error("Ingresa un presupuesto válido (solo números)");
+                        }
+                    } else {
+                        alert.error("La fecha inicial no puede ser mayor a la fecha final");
+                    }
+                } else {
+                    alert.error("Ingresa la fecha final");
+                }
+            } else {
+                alert.error("Ingresa la fecha inicial");
+            }
+        } else {
+            alert.error("Ingresa la descripción de la tarea");
+        }
+    } else {
+        alert.error("Ingresa el nombre de la tarea");
+    }
+};
+
+
+
   useEffect(() => {
     dispatch(consultarResponsables());
   }, []);

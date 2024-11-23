@@ -108,7 +108,7 @@ export const CreateActivity = () => {
       field: "correo",
     },
   ];
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
   async function createActivity() {
     let activity = {
       data: {
@@ -160,20 +160,39 @@ export const CreateActivity = () => {
   }
 
   const handleCreateActivity = () => {
-    nameActivity !== ""
-      ? descriptionActivity !== ""
-        ? dateInital !== null
-          ? DateFinish !== null
-            ? budgetActivity !== ""
-              ? selectedRowValue !== null
-                ? createActivity()
-                : alert.error("Seleccione un responsable para esta actividad")
-              : alert.error("Ingresa el presupuesto de la actividad")
-            : alert.error("Ingresa la fecha final")
-          : alert.error("Ingresa la fecha inicial")
-        : alert.error("Ingresa la descripción de la actividad")
-      : alert.error("Ingresa el nombre de la actividad");
-  };
+    if (nameActivity !== "") {
+        if (descriptionActivity !== "") {
+            if (dateInital !== null) {
+                if (DateFinish !== null) {
+                    if (new Date(dateInital) <= new Date(DateFinish)) {
+                        if (budgetActivity !== "" && !isNaN(budgetActivity)) {
+                            if (selectedRowValue !== null) {
+                                createActivity();
+                            } else {
+                                alert.error("Seleccione un responsable para esta actividad");
+                            }
+                        } else {
+                            alert.error("Ingresa un presupuesto válido (solo números)");
+                        }
+                    } else {
+                        alert.error("La fecha inicial no puede ser mayor a la fecha final");
+                    }
+                } else {
+                    alert.error("Ingresa la fecha final");
+                }
+            } else {
+                alert.error("Ingresa la fecha inicial");
+            }
+        } else {
+            alert.error("Ingresa la descripción de la actividad");
+        }
+    } else {
+        alert.error("Ingresa el nombre de la actividad");
+    }
+};
+
+
+
   useEffect(() => {
     dispatch(consultarResponsables());
   }, []);
@@ -362,7 +381,7 @@ export const CreateActivity = () => {
               }}
             >
               {" "}
-              Si esta actividad hace parte de su cronograma planeado incialmente
+              Si esta actividad hace parte de su cronograma planeado
               marque el chekbox
             </div>
             <div
