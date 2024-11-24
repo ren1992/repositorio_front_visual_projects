@@ -44,7 +44,7 @@ import { useAlert } from "react-alert";
  */
 
 //export const urlServer = "https://b6bd-181-50-11-30.ngrok-free.app/api";
-export const urlServer = "https://nodejs-production-f3b4.up.railway.app/api";
+export const urlServer = "https://nodejs-4xci-production.up.railway.app/api";
 /**
  * Peticion para consultar todos los lideres
  * @returns
