@@ -3,22 +3,11 @@ import "../../css/project.css";
 import axios, { formToJSON } from "axios";
 import Swal from "sweetalert2";
 import NavBar from "../navbar/Navbar";
-import imgFondo from "../../img/create-project.png";
-import btnAddLider from "../../img/btn-add-lider.png";
-import uno from "../../img/uno.png";
-import dos from "../../img/dos.png";
 import img_info from "../../img/img-info.png";
 import btn_lider from "../../img/btn-continuar.png";
-import { modalAddLeader } from "../../actions/events";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserTie } from "react-icons/fa";
-import { AiOutlineUserAdd } from "react-icons/ai";
 import { useAlert } from "react-alert";
-import Carousel from "react-elastic-carousel";
 import { useNavigate } from "react-router-dom";
-import CardRecursos from "../cards/CardRecursos";
-//import { consutarLideres } from "../actions/apis";
-import CardLider from "../cards/CardLider";
 import {
   consultarResponsables,
   consultarActividadesMetaInicio,
@@ -31,14 +20,7 @@ import {
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { registerLocale, setDefaultLocale } from "react-datepicker";
-import es from "date-fns/locale/es";
 import "../../css/activities.css";
-import {
-  openModalCreateLeader,
-  CancelConsultLiderToStorange,
-  AddinfoProjectToStorange,
-} from "../../actions/events";
 import { ModalAgregarLider } from "../modals/ModalAgregarLider";
 import MaterialTable, { MTableBody, MTableBodyRow } from "@material-table/core";
 import { AddActivityToStorange } from "../../actions/events";
@@ -54,7 +36,7 @@ export const CreateActivity = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { lideres, leader, responsables, dateInitialActivity, goal, recursos } =
+  const { responsables, goal } =
     useSelector((state) => state);
 
   const initiEvent = {

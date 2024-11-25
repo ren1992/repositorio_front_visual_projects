@@ -1,21 +1,15 @@
 import NavBar from "../navbar/Navbar";
 import imgFondoLider from "../../img/img-fondo-lider.png";
-import imgFondo from "../../img/liderProyecto.png";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserTie } from "react-icons/fa";
 import "../../css/project.css";
 import CardInfoProyecto from "../cards/CardInfoProyecto";
 import { useEffect, useState } from "react";
 export const Project = () => {
   const {
-    user,
-    projects,
     projectLeader,
     totalActivities,
     totalActivitiesFinish,
-    percentageFinishAct,
     totalTask,
-    percentageTask,
   } = useSelector((state) => state);
   const [loading, setLoading] = useState(true);
   useEffect(() => {

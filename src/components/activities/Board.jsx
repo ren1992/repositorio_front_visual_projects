@@ -4,15 +4,7 @@ import iconoUsuario from "../../img/directivo.png";
 import "../../css/board.css";
 import { MdTask } from "react-icons/md";
 import {
-  consultarActividadesMetaInicio,
   consultarActividadesMetas,
-  actualizarActividadesIOrganizacion,
-  consultarActividadesMetaOrganizacion,
-  actualizarActividadesInicio,
-  actualizarActividadesEjecucion,
-  consultarActividadesMetaEjecucion,
-  consultarActividadesMetaCierre,
-  actualizarActividadesCierre,
   consultarTareasActividades,
   consultarTareasActividadesInicio,
   consultarTareasActividadesOrganizacion,
@@ -46,11 +38,8 @@ const Board = (props) => {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const {
-    projectLeader,
     goal,
-    activitiesGoal,
     idActivity,
-    taskActivities,
     taskactivitiesInitials,
     taskactivitiesOrganization,
     taskactivitiesEjecution,

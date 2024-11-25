@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../../css/dashboard.css";
 import NavBar from "../navbar/Navbar";
-import imgInfo from "../../img/btn-inf-proyecto.png";
-import imgActividades from "../../img/btn-navegate-actividades.png";
-import imgTareas from "../../img/btn-tareas.png";
-import imgIndicador from "../../img/btn-indicadores.png";
-import imgMetas from "../../img/btn-metas.png";
 import { DashboardIndicators } from "./DashboardIndicators";
 import { useDispatch, useSelector } from "react-redux";
-import { GraphicsActivities } from "../graphics/GraphicActivities";
 import { useAlert } from "react-alert";
-import Carousel from "react-elastic-carousel";
 import { useNavigate } from "react-router-dom";
-import { GraphicsTaks } from "../graphics/GraphicTaks";
 import {
   consultarMetasProyecto,
   contadorEstadoTareas,
@@ -25,19 +17,14 @@ import bntPlanificacion from "../../img/btn-planificacion.png";
 import { GraphicGoals } from "../graphics/GraphicGoals";
 import { MdDashboard } from "react-icons/md";
 import { GiStairsGoal } from "react-icons/gi";
-import {
-  openModalCreateLeader,
-  CancelConsultLiderToStorange,
-  AddinfoProjectToStorange,
-} from "../../actions/events";
-import { Button } from "reactstrap";
+
 
 export const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { lideres, leader, projectLeader, goalsProject, user } = useSelector(
+  const { projectLeader, goalsProject, user } = useSelector(
     (state) => state
   );
 

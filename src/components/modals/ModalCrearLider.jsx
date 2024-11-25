@@ -4,7 +4,6 @@ import { Modal, ModalHeader, FormGroup } from "reactstrap";
 import Swal from "sweetalert2";
 import {
   closeModalCreateLeader,
-  ConsultLiderToStorange,
 } from "../../actions/events";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdOutlineEmail } from "react-icons/md";

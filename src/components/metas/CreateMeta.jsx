@@ -4,33 +4,18 @@ import NavBar from "../navbar/Navbar";
 import {  consultarMetasProyecto } from "../../actions/apis";
 import imgPlanos from "../../img/fondo-planos.png";
 import imgCrearMeta from "../../img/btn-crear-nueva-meta.png";
-import btnAddLider from "../../img/btn-crear-meta.png";
-import uno from "../../img/uno.png";
-import dos from "../../img/dos.png";
-import imgCrearMetas from "../../img/img-info.png";
-import btn_lider from "../../img/btn-continuar.png";
-import { modalAddLeader } from "../../actions/events";
+
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserTie } from "react-icons/fa";
-import { AiOutlineUserAdd } from "react-icons/ai";
 import { useAlert } from "react-alert";
-import Carousel from "react-elastic-carousel";
 import { useNavigate } from "react-router-dom";
-//import { consutarLideres } from "../actions/apis";
-import CardLider from "../cards/CardLider";
 import { crearMeta } from "../../actions/apis";
-import {
-  openModalCreateLeader,
-  CancelConsultLiderToStorange,
-  AddinfoProjectToStorange,
-} from "../../actions/events";
-import { ModalAgregarLider } from "../modals/ModalAgregarLider";
+
 
 export const CreateMeta = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { projectLeader, goalsProject } = useSelector((state) => state);
+  const { projectLeader } = useSelector((state) => state);
 
   const initiEvent = {
     nameGoal: "",

@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalHeader, FormGroup } from "reactstrap";
 import Swal from "sweetalert2";
 import {
-  closeModalCreateLeader,
-  ConsultLiderToStorange,
   modalCreateDirector
 } from "../../actions/events";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -12,11 +10,8 @@ import { MdOutlineEmail } from "react-icons/md";
 import "../../css/index.css";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { BiRename } from "react-icons/bi";
-import { crearLider, crearDirector } from "../../actions/apis";
-import {
-  consutarLideres,
-  consutarLideresSinProyecto,
-} from "../../actions/apis";
+import { crearDirector } from "../../actions/apis";
+
 
 export const ModalCrearDirector = () => {
   const dispatch = useDispatch();

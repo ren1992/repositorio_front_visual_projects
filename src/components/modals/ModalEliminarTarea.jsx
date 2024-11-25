@@ -3,28 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalHeader, FormGroup } from "reactstrap";
 import Swal from "sweetalert2";
 import {
-  closeModalAddLeader,
-  ConsultLiderToStorange,
-  closeModalTaddLeader,
-  modalAddLeader,
-  modalDeleteRecurso,
-  modalDeleteActivity,
   modalDeletelTask
 } from "../../actions/events";
-import MaterialTable, { MTableBody, MTableBodyRow } from "@material-table/core";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { MdOutlineEmail } from "react-icons/md";
 import "../../css/index.css";
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { BiRename } from "react-icons/bi";
-import { crearLider } from "../../actions/apis";
-import { consutarLideres } from "../../actions/apis";
 import { MdOutlineWarning } from "react-icons/md";
-import {  eliminarActividad, consultarActividadesMetas,consultarTareasActividades,consultarTareasActividadesInicio,consultarTareasActividadesOrganizacion,consultarTareasActividadesEjecucion, consultarTareasActividadesCierre, consultarPresupuestoMeta,eliminarTarea} from "../../actions/apis";
+import { consultarActividadesMetas,consultarTareasActividades,consultarTareasActividadesInicio,consultarTareasActividadesOrganizacion,consultarTareasActividadesEjecucion, consultarTareasActividadesCierre, consultarPresupuestoMeta,eliminarTarea} from "../../actions/apis";
 export const ModalEliminarTarea = (props) => {
   const dispatch = useDispatch();
-  const { modalLider, leaders, deleteRecursoActividad, recursoActividad, idActivity, deleteActivityProject, goal,deleteModalTask } = useSelector((state) => state);
-  console.log("soy el idActivity", idActivity)
+  const {idActivity,  goal,deleteModalTask } = useSelector((state) => state);
   const handleCerrar = () => {
     dispatch(modalDeletelTask(false));
   };

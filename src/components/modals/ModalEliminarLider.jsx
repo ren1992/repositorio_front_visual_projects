@@ -1,50 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalHeader, FormGroup } from "reactstrap";
-import Swal from "sweetalert2";
 import {
-  closeModalAddLeader,
-  ConsultLiderToStorange,
-  closeModalTaddLeader,
-  modalAddLeader,
-  modalDeleteRecurso,
-  modalDeleteActivity,
-  modalDeletelGoal,
   modalDeleteLider
 } from "../../actions/events";
-import MaterialTable, { MTableBody, MTableBodyRow } from "@material-table/core";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { MdOutlineEmail } from "react-icons/md";
 import "../../css/index.css";
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { BiRename } from "react-icons/bi";
-import { crearLider } from "../../actions/apis";
 import { consutarLideres } from "../../actions/apis";
 import { MdOutlineWarning } from "react-icons/md";
 import {
-  eliminarActividad,
-  consultarActividadesMetas,
-  consultarTareasActividades,
-  consultarTareasActividadesInicio,
-  consultarTareasActividadesOrganizacion,
-  consultarTareasActividadesEjecucion,
-  consultarTareasActividadesCierre,
-  consultarPresupuestoMeta,
-  eliminarMeta,
-  consultarMetasProyecto,
   eliminarLider
 } from "../../actions/apis";
 export const ModalEliminarLider = (props) => {
   const dispatch = useDispatch();
   const {
-    idMeta,
-    leaders,
-    deleteRecursoActividad,
-    projectLeader,
-    deleteModalGoal,
-    idActivity,
-    deleteActivityProject,
-    goal,
     deleteLiders,
     addIdLiders
   } = useSelector((state) => state);

@@ -1,13 +1,10 @@
 import NavBar from "./navbar/Navbar";
-import imgFondo from "../img/direccionProyectos.png";
-import imgLider from "../img/img-lider.png";
 import imgFondoLider from "../img/img-fondo-lider.png";
 import btnCrearProyecto from "../img/btn-crear-proyecto.png";
 import btnLideres from "../img/btn-lideres.png";
 import Carousel from "react-elastic-carousel";
 import "../css/home.css";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { FaUserTie } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   consutarLideres,
@@ -23,8 +20,6 @@ import {
 import CardProyectos from "./cards/CardProyectos";
 import CardInfoProyecto from "./cards/CardInfoProyecto";
 import { useEffect, useState } from "react";
-
-import { HiSearch } from "react-icons/hi";
 export const Home = () => {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
@@ -37,7 +32,6 @@ export const Home = () => {
     totalActivitiesFinish,
     percentageFinishAct,
     totalTask,
-    percentageTask,
   } = useSelector((state) => state);
 
   const breakpoint = [

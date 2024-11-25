@@ -20,7 +20,6 @@ import { MdEmail } from "react-icons/md";
 import { BiRename } from "react-icons/bi";
 import { FaUserTie } from "react-icons/fa";
 import { ImUserTie } from "react-icons/im";
-import { persistStore } from "redux-persist";
 import { DeleteUserToStorange } from "../../actions/events";
 import { useDispatch, useSelector } from "react-redux";
 

@@ -1,10 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { MdDescription } from "react-icons/md";
-import { BiRename } from "react-icons/bi";
 import React, { useEffect, useState } from "react";
 import "../../css/Card.css";
-import { GiCrane } from "react-icons/gi";
-import { FaUserTie } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AddProjectToStorange } from "../../actions/events";
 import imgProyecto from "../../img/img-project.png";
@@ -14,8 +10,6 @@ import { MdDelete } from "react-icons/md";
 import { AiOutlineEdit } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
 import {
-  consultarProyectoSPI,
-  consultarProyectoCPI,
   consultarProyectoLider,
   contarActividades,
   contarActividadesFinalizadas,
@@ -36,14 +30,6 @@ const CardProyectos = (props) => {
   };
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {
-    lideres,
-    leader,
-    dataSpiProject,
-    dataCpiProject,
-    percentageFinishAct,
-    percentageTask,
-  } = useSelector((state) => state);
 
   const handleProject = async () => {
     await dispatch(consultarProyectoLider(props?.idlider));

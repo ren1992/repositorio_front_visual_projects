@@ -3,30 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalHeader, FormGroup } from "reactstrap";
 import Swal from "sweetalert2";
 import {
-  closeModalCreateLeader,
-  ConsultLiderToStorange,
-  modalDetailRecurso,
-  modalDetailGoal,
   modalDetailLider
 } from "../../actions/events";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { MdOutlineEmail } from "react-icons/md";
+
 import "../../css/index.css";
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { BiRename } from "react-icons/bi";
 import {
-  crearLider,
-  actualizarRecursoActividad,
-  consultarPresupuestoActividad,
-  totalPresupuestoRecursosActividad,
-  totalPresupuestoTareasActividad,
-  consultarRecursoActividad,
-  actualizarRecursoTarea,
-  consultarPresupuestoMeta,
-  consultarPresupuestoTarea,
-  consultarRecursoTarea,
-  actualizarMeta,
-  consultarMetasProyecto,
   actualizarLider,
   consutarLideres
 } from "../../actions/apis";
@@ -51,15 +32,6 @@ export const ModalDetailLider = (props) => {
   };
 
   const {
-    modalLeader,
-    detailRecursoActivity,
-    recursoActividad,
-    idActivity,
-    presupuestoMeta,
-    goal,
-    detailModalGoal,
-    projectLeader,
-    meta,
     detailLiders,
     addIdLiders
   } = useSelector((state) => state);

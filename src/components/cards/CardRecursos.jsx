@@ -1,10 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { MdDescription } from "react-icons/md";
-import { BiRename } from "react-icons/bi";
 import React, { useEffect, useState } from "react";
 import "../../css/Card.css";
-import { GiCrane } from "react-icons/gi";
-import { FaUserTie } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import {
   AddProjectToStorange,
@@ -12,12 +8,7 @@ import {
   AddRecursoActividadToStorange,
   modalDeleteRecurso,
 } from "../../actions/events";
-import imgProyecto from "../../img/img-project.png";
-import VelocimetroSPI from "../graphics/VelocimetroSPI";
-import VelocimetroCPI from "../graphics/VelocimetroCPI";
 import {
-  consultarProyectoSPI,
-  consultarProyectoCPI,
   consultarProyectoLider,
   contarActividades,
   contarActividadesFinalizadas,
@@ -40,12 +31,6 @@ const CardRecursos = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
-    lideres,
-    leader,
-    dataSpiProject,
-    dataCpiProject,
-    percentageFinishAct,
-    percentageTask,
     user,
   } = useSelector((state) => state);
 

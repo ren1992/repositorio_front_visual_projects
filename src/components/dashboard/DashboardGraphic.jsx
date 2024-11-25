@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../../css/dashboard.css";
-import NavBar from "../navbar/Navbar";
-import imgFondo from "../../img/create-project.png";
 import { GraphicsActivities } from "../graphics/GraphicActivities";
 import { useDispatch, useSelector } from "react-redux";
 import { GraphicsTaks } from "../graphics/GraphicTaks";
@@ -13,7 +11,6 @@ import VelocimetroCPI from "../graphics/VelocimetroCPI";
 import { consutarLideresSinProyecto } from "../../actions/apis";
 import {
   openModalCreateLeader,
-  CancelConsultLiderToStorange,
   AddinfoProjectToStorange,
   modalInformationSPI,
   modalInformationCPI
@@ -33,7 +30,7 @@ export const DashboardGraphic = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { lideres, leader, dataSpiProject, dataCpiProject, percentageFinishAct , percentageTask} = useSelector(
+  const { dataSpiProject, dataCpiProject, percentageFinishAct , percentageTask} = useSelector(
     (state) => state
   );
 

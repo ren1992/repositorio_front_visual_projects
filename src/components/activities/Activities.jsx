@@ -1,23 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../../css/Card.css";
 import NavBar from "../navbar/Navbar";
-import imgCrearMeta from "../../img/btn-crear-meta.png";
-import btnAddLider from "../../img/btn-crear-meta.png";
-import uno from "../../img/uno.png";
-import dos from "../../img/dos.png";
-import imgCrearMetas from "../../img/img-info.png";
-import btn_lider from "../../img/btn-continuar.png";
-import { modalAddLeader } from "../../actions/events";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserTie } from "react-icons/fa";
-import { AiOutlineUserAdd } from "react-icons/ai";
 import { useAlert } from "react-alert";
-import Carousel from "react-elastic-carousel";
 import { useNavigate } from "react-router-dom";
-//import { consutarLideres } from "../actions/apis";
-import CardLider from "../cards/CardLider";
-import CardMetas from "../cards/CardMetas";
-import imgCrearActividad from "../../img/btn-crear-actividad.png";
 import iconoUsuario from "../../img/directivo.png";
 import { AddIdActivityToStorange, modalDetailActivity } from "../../actions/events";
 import { MdTask } from "react-icons/md";
@@ -26,13 +12,6 @@ import { consultarMetasProyecto,consultarPresupuestoMeta } from "../../actions/a
 import {
   consultarActividadesMetaInicio,
   consultarActividadesMetas,
-  actualizarActividadesIOrganizacion,
-  consultarActividadesMetaOrganizacion,
-  actualizarActividadesInicio,
-  actualizarActividadesEjecucion,
-  consultarActividadesMetaEjecucion,
-  consultarActividadesMetaCierre,
-  actualizarActividadesCierre,
   consultarTareasActividades,
   consultarTareasActividadesInicio,
   consultarTareasActividadesOrganizacion,
@@ -43,14 +22,8 @@ import {
   totalPresupuestoTareasActividad
 } from "../../actions/apis";
 import {
-  openModalCreateLeader,
-  CancelConsultLiderToStorange,
-  AddinfoProjectToStorange,
   modalDeleteActivity
 } from "../../actions/events";
-import { ModalAgregarLider } from "../modals/ModalAgregarLider";
-import { GiStairsGoal } from "react-icons/gi";
-import { AiOutlineEdit } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
 import Board from "./Board";
 import { ModalDetailActivity } from "../modals/ModalDetailActivity";
@@ -64,7 +37,6 @@ export const Activities = () => {
       minimumFractionDigits: 2,
     }).format(number);
   };
-  const [showButton, setShowButton] = useState(false);
   const [loading, setLoading] = useState(true);
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [activity, setActivity] = useState(null);

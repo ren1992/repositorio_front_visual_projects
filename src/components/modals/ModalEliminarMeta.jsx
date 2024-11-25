@@ -1,34 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalHeader, FormGroup } from "reactstrap";
-import Swal from "sweetalert2";
 import {
-  closeModalAddLeader,
-  ConsultLiderToStorange,
-  closeModalTaddLeader,
-  modalAddLeader,
-  modalDeleteRecurso,
-  modalDeleteActivity,
   modalDeletelGoal,
 } from "../../actions/events";
-import MaterialTable, { MTableBody, MTableBodyRow } from "@material-table/core";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { MdOutlineEmail } from "react-icons/md";
 import "../../css/index.css";
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { BiRename } from "react-icons/bi";
-import { crearLider } from "../../actions/apis";
-import { consutarLideres } from "../../actions/apis";
 import { MdOutlineWarning } from "react-icons/md";
 import {
-  eliminarActividad,
-  consultarActividadesMetas,
-  consultarTareasActividades,
-  consultarTareasActividadesInicio,
-  consultarTareasActividadesOrganizacion,
-  consultarTareasActividadesEjecucion,
-  consultarTareasActividadesCierre,
-  consultarPresupuestoMeta,
   eliminarMeta,
   consultarMetasProyecto
 } from "../../actions/apis";
@@ -36,13 +14,8 @@ export const ModalEliminarMeta = (props) => {
   const dispatch = useDispatch();
   const {
     idMeta,
-    leaders,
-    deleteRecursoActividad,
     projectLeader,
     deleteModalGoal,
-    idActivity,
-    deleteActivityProject,
-    goal,
   } = useSelector((state) => state);
 
   const handleCerrar = () => {
@@ -50,7 +23,6 @@ export const ModalEliminarMeta = (props) => {
   };
 
   async function handleDeleteRecurso() {
-    console.log("soy el idMeta",idMeta)
     await dispatch(eliminarMeta(idMeta));
     await dispatch(
       consultarMetasProyecto(projectLeader[0]?.Cronograma_idCronograma)

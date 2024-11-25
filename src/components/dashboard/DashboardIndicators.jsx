@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../../css/dashboard.css";
-import NavBar from "../navbar/Navbar";
-import imgFondo from "../../img/create-project.png";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import { useAlert } from "react-alert";
-import Carousel from "react-elastic-carousel";
 import { useNavigate } from "react-router-dom";
-
 import { consutarLideresSinProyecto } from "../../actions/apis";
 import {
   openModalCreateLeader,
-  CancelConsultLiderToStorange,
   AddinfoProjectToStorange,
 } from "../../actions/events";
 
@@ -20,7 +13,7 @@ export const DashboardIndicators = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { lideres, leader, informationIndicators } = useSelector((state) => state);
+  const { informationIndicators } = useSelector((state) => state);
 
   const initiEvent = {
     nameProyect: "",

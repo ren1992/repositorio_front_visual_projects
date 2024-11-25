@@ -4,14 +4,9 @@ import { Modal, ModalHeader, FormGroup } from "reactstrap";
 import Swal from "sweetalert2";
 import {
   closeModalCreateLeader,
-  ConsultLiderToStorange,
   modalInformationSPI,
 } from "../../actions/events";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { MdOutlineEmail } from "react-icons/md";
 import "../../css/index.css";
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { BiRename } from "react-icons/bi";
 import { crearLider } from "../../actions/apis";
 import {
   consutarLideres,

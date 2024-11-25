@@ -3,25 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalHeader, FormGroup } from "reactstrap";
 import Swal from "sweetalert2";
 import {
-  closeModalCreateLeader,
-  ConsultLiderToStorange,
-  modalDetailRecurso,
-  modalDetailGoal,
   modalDetailProject
 } from "../../actions/events";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { MdOutlineEmail } from "react-icons/md";
 import "../../css/index.css";
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { BiRename } from "react-icons/bi";
 import {
   actualizarProjecto,
-  consultarProyectos,
   consultarProyectosDirector
-} from "../../actions/apis";
-import {
-  consutarLideres,
-  consutarLideresSinProyecto,
 } from "../../actions/apis";
 import DatePicker from "react-datepicker";
 
@@ -52,15 +39,6 @@ export const ModalDetailProject = (props) => {
   const [dateInital, handleDateInitialChange] = useState(null);
   const [DateFinish, handleDateFinishChange] = useState(null);
   const {
-    modalLeader,
-    detailRecursoActivity,
-    recursoActividad,
-    idActivity,
-    presupuestoMeta,
-    goal,
-    detailModalGoal,
-    projectLeader,
-    meta,
     project,
     user,
     detailProjects

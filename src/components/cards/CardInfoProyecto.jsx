@@ -1,13 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { MdEmail } from "react-icons/md";
-import { BiRename } from "react-icons/bi";
 import imgProject from "../../img/img-project.png";
-import imgCPI from "../../img/img-indicador-cpi.png";
-import imgSPI from "../../img/img-indicador-spi.png";
 import btnSeguimiento from "../../img/btn-seguimiento-proyecto.png";
 import React from "react";
 import "../../css/Card.css";
-import { FaUserTie } from "react-icons/fa";
 import { GraphicsActivities } from "../graphics/GraphicActivities";
 import { GraphicsTaks } from "../graphics/GraphicTaks";
 import { useNavigate } from "react-router-dom";

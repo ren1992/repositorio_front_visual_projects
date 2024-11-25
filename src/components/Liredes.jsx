@@ -1,25 +1,18 @@
 import React, { useEffect } from "react";
-
 import NavBar from "./navbar/Navbar";
 import imgFondo from "../img/direccionProyectos.png";
-
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserTie } from "react-icons/fa";
 import { AiOutlineUserAdd } from "react-icons/ai";
-
 import Carousel from "react-elastic-carousel";
-
-import { consutarLideres } from "../actions/apis";
 import CardLider from "./cards/CardLider";
 import {
   openModalCreateLeader,
-  CancelConsultLiderToStorange,
 } from "../actions/events";
 import { ModalCrearLider } from "./modals/ModalCrearLider";
 
 export const Lideres = () => {
   const dispatch = useDispatch();
-  const { lideres, leader } = useSelector((state) => state);
+  const { lideres } = useSelector((state) => state);
 
   const breakpoint = [
     { width: 1, itemsToShow: 1 },
@@ -27,13 +20,6 @@ export const Lideres = () => {
     { width: 768, itemsToShow: 2 },
     { width: 1200, itemsToShow: 6 },
   ];
-
-  /*useEffect(() => {
-    if (lideres) {
-      dispatch(consutarLideres());
-      dispatch(CancelConsultLiderToStorange());
-    }
-  }, [...lideres]);*/
 
   const handleModalCreateLeader = () => {
     dispatch(openModalCreateLeader());

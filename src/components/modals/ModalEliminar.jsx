@@ -1,23 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalHeader, FormGroup } from "reactstrap";
-import Swal from "sweetalert2";
 import {
-  closeModalAddLeader,
-  ConsultLiderToStorange,
-  closeModalTaddLeader,
-  modalAddLeader,
   modalDeleteRecurso,
-  modalDetailActivity,
 } from "../../actions/events";
-import MaterialTable, { MTableBody, MTableBodyRow } from "@material-table/core";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { MdOutlineEmail } from "react-icons/md";
 import "../../css/index.css";
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { BiRename } from "react-icons/bi";
-import { crearLider } from "../../actions/apis";
-import { consutarLideres } from "../../actions/apis";
 import { MdOutlineWarning } from "react-icons/md";
 import {
   eliminarPresupuestoActividad,
@@ -34,8 +21,6 @@ import {
 export const ModalEliminar = (props) => {
   const dispatch = useDispatch();
   const {
-    modalLider,
-    leaders,
     deleteRecursoActividad,
     recursoActividad,
     idActivity,
@@ -48,8 +33,6 @@ export const ModalEliminar = (props) => {
 
   async function handleDeleteRecurso() {
     if (props.tarea === true) {
-      console.log("quiero eliminar un recurso de una tarea")
-      console.log("recursoActividad", idActivity)
       await dispatch(eliminarRecursoTarea(recursoActividad?.id));
       await dispatch(consultarPresupuestoMeta(goal.id))
       await dispatch(consultarPresupuestoTarea(props?.idTarea));

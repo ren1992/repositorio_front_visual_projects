@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { MdEmail } from "react-icons/md";
-import { BiRename } from "react-icons/bi";
 import React,{useState} from "react";
 import "../../css/Card.css";
 import { FaUserTie } from "react-icons/fa";

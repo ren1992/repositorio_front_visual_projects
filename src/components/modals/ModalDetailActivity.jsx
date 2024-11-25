@@ -2,14 +2,10 @@ import React, { useEffect, useState } from "react";
 import Carousel from "react-elastic-carousel";
 import axios, { formToJSON } from "axios";
 import Swal from "sweetalert2";
-
 import img_info from "../../img/img-info.png";
 import btn_lider from "../../img/btn-continuar.png";
-
 import { useDispatch, useSelector } from "react-redux";
-
 import { useAlert } from "react-alert";
-
 import { useNavigate } from "react-router-dom";
 import CardRecursos from "../cards/CardRecursos";
 import {
@@ -21,15 +17,11 @@ import {
   consultarActividadesMetaCierre,
   consultarActividadPlaneada,
   actualizarActividad,
-  consultarRecursoActividad,
   consultarPresupuestoActividad
 } from "../../actions/apis";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { registerLocale, setDefaultLocale } from "react-datepicker";
-import es from "date-fns/locale/es";
 import "../../css/activities.css";
-
 import MaterialTable, { MTableBody, MTableBodyRow } from "@material-table/core";
 import {
   AddActivityToStorange,
@@ -53,10 +45,7 @@ export const ModalDetailActivity = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
-    lideres,
-    leader,
     responsables,
-    dateInitialActivity,
     goal,
     user,
     detailActivityProject,

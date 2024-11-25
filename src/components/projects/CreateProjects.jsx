@@ -2,20 +2,13 @@ import React, { useEffect, useState } from "react";
 import "../../css/project.css";
 import NavBar from "../navbar/Navbar";
 import imgFondo from "../../img/create-project.png";
-import btnAddLider from "../../img/btn-add-lider.png";
 import uno from "../../img/uno.png";
 import dos from "../../img/dos.png";
 import img_info from "../../img/img-info.png";
 import btn_lider from "../../img/btn-continuar.png";
-import { modalAddLeader } from "../../actions/events";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserTie } from "react-icons/fa";
-import { AiOutlineUserAdd } from "react-icons/ai";
 import { useAlert } from 'react-alert'
-import Carousel from "react-elastic-carousel";
 import { useNavigate } from "react-router-dom";
-//import { consutarLideres } from "../actions/apis";
-import CardLider from "../cards/CardLider";
 import { consutarLideresSinProyecto } from "../../actions/apis";
 import {
   openModalCreateLeader,

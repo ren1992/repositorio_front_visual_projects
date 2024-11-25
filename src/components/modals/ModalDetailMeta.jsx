@@ -3,34 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalHeader, FormGroup } from "reactstrap";
 import Swal from "sweetalert2";
 import {
-  closeModalCreateLeader,
-  ConsultLiderToStorange,
-  modalDetailRecurso,
   modalDetailGoal
 } from "../../actions/events";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { MdOutlineEmail } from "react-icons/md";
 import "../../css/index.css";
-import { AiOutlineUserAdd } from "react-icons/ai";
-import { BiRename } from "react-icons/bi";
 import {
-  crearLider,
-  actualizarRecursoActividad,
-  consultarPresupuestoActividad,
-  totalPresupuestoRecursosActividad,
-  totalPresupuestoTareasActividad,
-  consultarRecursoActividad,
-  actualizarRecursoTarea,
-  consultarPresupuestoMeta,
-  consultarPresupuestoTarea,
-  consultarRecursoTarea,
   actualizarMeta,
   consultarMetasProyecto
 } from "../../actions/apis";
-import {
-  consutarLideres,
-  consutarLideresSinProyecto,
-} from "../../actions/apis";
+
 
 export const ModalDetailMeta = (props) => {
   const dispatch = useDispatch();
@@ -52,12 +32,6 @@ export const ModalDetailMeta = (props) => {
   };
 
   const {
-    modalLeader,
-    detailRecursoActivity,
-    recursoActividad,
-    idActivity,
-    presupuestoMeta,
-    goal,
     detailModalGoal,
     projectLeader,
     meta
@@ -67,8 +41,6 @@ export const ModalDetailMeta = (props) => {
   }
 
   async function handleAceptar() {
-  
-     
         let recurso = {
           data: {
             goal: {
@@ -79,7 +51,6 @@ export const ModalDetailMeta = (props) => {
             },
           },
         };
-        console.log("soy el recurso", recurso);
         await dispatch(actualizarMeta(recurso));
         await dispatch(consultarMetasProyecto(projectLeader[0]?.Cronograma_idCronograma));
         dispatch(modalDetailGoal(false));
@@ -90,8 +61,6 @@ export const ModalDetailMeta = (props) => {
           presupuesto: "",
         });
         Swal.fire("Listo", "Se han realizado los cambios", "success");
-      
-    
   }
 
   return (

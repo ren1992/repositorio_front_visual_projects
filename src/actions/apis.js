@@ -1,6 +1,5 @@
 import {
   AddUserToStorange,
-  AddErrorsUserToStorange,
   AddLiderToStorange,
   AddProjectsToStorange,
   AddLeaderToStorange,
@@ -38,7 +37,7 @@ import {
 } from "./events";
 import axios, { formToJSON } from "axios";
 import Swal from "sweetalert2";
-import { useAlert } from "react-alert";
+
 /**
  * Consultas a las Apis
  */
@@ -46,9 +45,16 @@ import { useAlert } from "react-alert";
 //export const urlServer = "http://localhost:4000/api";
 export const urlServer = "https://nodejs-4xci-production.up.railway.app/api";
 /**
- * Peticion para consultar todos los lideres
- * @returns
+ * @description Inicia sesión en la plataforma con las credenciales de un usuario.
+ * Envía una solicitud POST al servidor con el correo electrónico y contraseña del usuario.
+ * 
+ * @route POST /login
+ * @param {string} email - Correo electrónico del usuario.
+ * @param {string} password - Contraseña del usuario.
+ * @returns {Promise<void>} - Guarda los datos del usuario en el almacenamiento o muestra una alerta en caso de error.
+ * @throws {Error} Si ocurre un error en la autenticación.
  */
+
 export const login = async(email, password) => {
   return async (dispatch) => {
     let resquest = {
@@ -78,6 +84,15 @@ export const login = async(email, password) => {
   };
 };
 
+/**
+ * @description Obtiene la lista de todos los líderes registrados en el sistema.
+ * Envía una solicitud GET al servidor para recuperar la información.
+ * 
+ * @route GET /consultar/lideres
+ * @returns {Promise<Array>} - Una lista de líderes almacenada en el sistema.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
+
 export const consutarLideres = () => {
   return async (dispatch) => {
     await axios({
@@ -100,9 +115,14 @@ export const consutarLideres = () => {
 };
 
 /**
- * Peticion para consultar todos los lideres sin proyecto asociado
- * @returns
+ * @description Obtiene la lista de líderes sin proyectos asignados.
+ * Envía una solicitud GET al servidor para recuperar la información.
+ * 
+ * @route GET /consultar/lideres/on-proyects
+ * @returns {Promise<Array>} - Una lista de líderes sin proyectos.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
  */
+
 export const consutarLideresSinProyecto = () => {
   return async (dispatch) => {
     await axios({
@@ -124,9 +144,15 @@ export const consutarLideresSinProyecto = () => {
 };
 
 /**
- * Peticion para crear un nuevo lider
- * @returns
+ * @description Crea un nuevo líder en el sistema.
+ * Envía una solicitud POST al servidor con la información del líder.
+ * 
+ * @route POST /crear/lider
+ * @param {Object} lider - Objeto con los datos del líder (nombre, correo, etc.).
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
  */
+
 export const crearLider = (lider) => {
   return async (dispatch) => {
     await axios({
@@ -148,6 +174,15 @@ export const crearLider = (lider) => {
   };
 };
 
+/**
+ * @description Crea un nuevo director en el sistema.
+ * Envía una solicitud POST al servidor con los datos del director.
+ * 
+ * @route POST /crear/director
+ * @param {Object} proyecto - Objeto con los datos del director (nombre, email, password).
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
 export const crearDirector = (director) => {
   return async (dispatch) => {
     await axios({
@@ -171,9 +206,15 @@ export const crearDirector = (director) => {
 
 
 /**
- * Peticion para crear un nuevo proyecto
- * @returns
+ * @description Crea un nuevo proyecto en el sistema.
+ * Envía una solicitud POST al servidor con los datos del proyecto.
+ * 
+ * @route POST /crear/proyectos
+ * @param {Object} proyecto - Objeto con los datos del proyecto (nombre, descripción, etc.).
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
  */
+
 export const crearProyecto = (proyecto) => {
   return async (dispatch) => {
     await axios({
@@ -196,9 +237,14 @@ export const crearProyecto = (proyecto) => {
 };
 
 /**
- * Peticion para consultar todos los proyectos
- * @returns
+ * @description Obtiene la lista de todos los proyectos en el sistema.
+ * Envía una solicitud GET al servidor para recuperar los datos.
+ * 
+ * @route GET /consultar/proyectos
+ * @returns {Promise<Array>} - Una lista de proyectos.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
  */
+
 export const consultarProyectos = (idDirector) => {
   return async (dispatch) => {
     await axios({
@@ -221,9 +267,15 @@ export const consultarProyectos = (idDirector) => {
 };
 
 /**
- * Peticion para consultar los proyectos asociados a un director
- * @returns
+ * @description Obtiene los proyectos asociados a un director específico.
+ * Envía una solicitud GET al servidor con el ID del director.
+ * 
+ * @route GET /consultar/proyecto/director/:idDirector
+ * @param {string} idDirector - ID del director para buscar sus proyectos.
+ * @returns {Promise<Array>} - Una lista de proyectos asociados al director.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
  */
+
 export const consultarProyectosDirector = (idDirector) => {
   return async (dispatch) => {
     let test = await axios({
@@ -271,9 +323,15 @@ export const consultarProyectoLider = (idLider) => {
 };
 
 /**
- * Peticion para contar las actividades asociadas a un proyecto
- * @returns
+ * @description Cuenta el total de actividades asociadas a un cronograma de proyecto.
+ * Envía una solicitud POST al servidor con el ID del cronograma.
+ * 
+ * @route POST /contar/actividades
+ * @param {string} idCronograma - ID del cronograma a consultar.
+ * @returns {Promise<number>} - Devuelve el número total de actividades asociadas al cronograma.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
  */
+
 export const contarActividades = (idCronograma) => {
   return async (dispatch) => {
     await axios({
@@ -302,9 +360,15 @@ export const contarActividades = (idCronograma) => {
 };
 
 /**
- * Peticion para contar las actividades asociadas a un proyecto
- * @returns
+ * @description Cuenta el total de actividades finalizadas asociadas a un cronograma de proyecto.
+ * Envía una solicitud POST al servidor con el ID del cronograma.
+ * 
+ * @route POST /contar/actividades/finalizadas
+ * @param {string} idCronograma - ID del cronograma a consultar.
+ * @returns {Promise<number>} - Devuelve el número total de actividades finalizadas.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
  */
+
 export const contarActividadesFinalizadas = (idCronograma) => {
   return async (dispatch) => {
     await axios({
@@ -333,9 +397,15 @@ export const contarActividadesFinalizadas = (idCronograma) => {
 };
 
 /**
- * Peticion para contar las actividades asociadas a un proyecto
- * @returns
+ * @description Calcula el porcentaje de actividades finalizadas en un cronograma.
+ * Envía una solicitud POST al servidor con el ID del cronograma.
+ * 
+ * @route POST /porcentaje/actividades/finalizadas
+ * @param {string} idCronograma - ID del cronograma a consultar.
+ * @returns {Promise<number>} - Devuelve el porcentaje de actividades completadas.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
  */
+
 export const porcentajeActividadesFinalizadas = (idCronograma) => {
   return async (dispatch) => {
     await axios({
@@ -364,9 +434,15 @@ export const porcentajeActividadesFinalizadas = (idCronograma) => {
 };
 
 /**
- * Peticion para contar las actividades asociadas a un proyecto
- * @returns
+ * @description Cuenta el total de tareas asociadas a un cronograma de proyecto.
+ * Envía una solicitud POST al servidor con el ID del cronograma.
+ * 
+ * @route POST /contar/tareas
+ * @param {string} idCronograma - ID del cronograma a consultar.
+ * @returns {Promise<number>} - Devuelve el número total de tareas asociadas al cronograma.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
  */
+
 export const totalTareas = (idCronograma) => {
   return async (dispatch) => {
     await axios({
@@ -395,9 +471,15 @@ export const totalTareas = (idCronograma) => {
 };
 
 /**
- * Peticion para obtener el porcentaje del total tareas finalizadas asociadas al proyecto
- * @returns
+ * @description Calcula el porcentaje de tareas finalizadas en un cronograma.
+ * Envía una solicitud POST al servidor con el ID del cronograma.
+ * 
+ * @route POST /porcentaje/tareas/finalizadas
+ * @param {string} idCronograma - ID del cronograma a consultar.
+ * @returns {Promise<number>} - Devuelve el porcentaje de tareas completadas.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
  */
+
 export const porcentajeTareasTerminadas = (idCronograma) => {
   return async (dispatch) => {
     await axios({
@@ -816,6 +898,15 @@ export const actualizarActividadesIOrganizacion = (idActividad) => {
   };
 };
 
+/**
+ * @description Actualiza el estado de una actividad a "Inicio".
+ * Envía una solicitud PUT al servidor con el ID de la actividad.
+ * 
+ * @route PUT /actualizar/estado-inicio/actividad/:idActividad
+ * @param {string} idActividad - ID de la actividad a actualizar.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
 
 export const actualizarActividadesInicio = (idActividad) => {
   return async (dispatch) => {
@@ -837,6 +928,16 @@ export const actualizarActividadesInicio = (idActividad) => {
   };
 };
 
+/**
+ * @description Actualiza el estado de una actividad a "Ejecucion".
+ * Envía una solicitud PUT al servidor con el ID de la actividad.
+ * 
+ * @route PUT /actualizar/estado-inicio/actividad/:idActividad
+ * @param {string} idActividad - ID de la actividad a actualizar.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
+
 export const actualizarActividadesEjecucion = (idActividad) => {
   return async (dispatch) => {
     await axios({
@@ -857,6 +958,15 @@ export const actualizarActividadesEjecucion = (idActividad) => {
   };
 };
 
+/**
+ * @description Actualiza el estado de una actividad a "Cierre".
+ * Envía una solicitud PUT al servidor con el ID de la actividad.
+ * 
+ * @route PUT /actualizar/estado-cierre/actividad/:idActividad
+ * @param {string} idActividad - ID de la actividad a actualizar.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
 
 export const actualizarActividadesCierre = (idActividad) => {
   return async (dispatch) => {
@@ -878,6 +988,16 @@ export const actualizarActividadesCierre = (idActividad) => {
   };
 };
 
+/**
+ * @description Actualiza el estado de una tarea a "Inicio".
+ * Envía una solicitud PUT al servidor con el ID de la tarea.
+ * 
+ * @route PUT /actualizar/estado-inicio/tarea/:idTarea
+ * @param {string} idTarea - ID de la tarea a actualizar.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
+
 export const actualizarTareasInicio = (idTarea) => {
   return async (dispatch) => {
     await axios({
@@ -897,6 +1017,17 @@ export const actualizarTareasInicio = (idTarea) => {
       });
   };
 };
+
+/**
+ * @description Actualiza el estado de una tarea a "Organización ".
+ * Envía una solicitud PUT al servidor con el ID de la tarea.
+ * 
+ * @route PUT /actualizar/estado-inicio/tarea/:idTarea
+ * @param {string} idTarea - ID de la tarea a actualizar.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
+
 export const actualizarTareasOrganizacion = (idTarea) => {
   return async (dispatch) => {
     await axios({
@@ -917,6 +1048,15 @@ export const actualizarTareasOrganizacion = (idTarea) => {
   };
 };
 
+/**
+ * @description Actualiza el estado de una tarea a "Ejecucion".
+ * Envía una solicitud PUT al servidor con el ID de la tarea.
+ * 
+ * @route PUT /actualizar/estado-inicio/tarea/:idTarea
+ * @param {string} idTarea - ID de la tarea a actualizar.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
 export const actualizarTareasEjecucion = (idTarea) => {
   return async (dispatch) => {
     await axios({
@@ -936,6 +1076,16 @@ export const actualizarTareasEjecucion = (idTarea) => {
       });
   };
 };
+
+/**
+ * @description Actualiza el estado de una tarea a "Cierre".
+ * Envía una solicitud PUT al servidor con el ID de la tarea.
+ * 
+ * @route PUT /actualizar/estado-cierre/tarea/:idTarea
+ * @param {string} idTarea - ID de la tarea a actualizar.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
 
 export const actualizarTareasCierre = (idTarea) => {
   return async (dispatch) => {
@@ -1241,9 +1391,18 @@ export const actualizarRecursoActividad= (data) => {
 };
 
 
+/**
+ * @description Elimina una actividad específica del sistema.
+ * Envía una solicitud DELETE al servidor con el ID de la actividad.
+ * 
+ * @route DELETE /eliminar/actividad/:idActividad
+ * @param {string} idActividad - ID de la actividad a eliminar.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
+
 export const eliminarActividad= (idActividad) => {
   return async (dispatch) => {
-    //console.log("soy el data", JSON.stringify(data))
     await axios({
       method: "delete",
       url: urlServer + `/eliminar/actividad/${idActividad}`,
@@ -1414,6 +1573,16 @@ export const actualizarRecursoTarea= (data) => {
   };
 };
 
+/**
+ * @description Elimina una tarea específica del sistema.
+ * Envía una solicitud DELETE al servidor con el ID de la tarea.
+ * 
+ * @route DELETE /eliminar/tarea/:idTarea
+ * @param {string} idTarea - ID de la tarea a eliminar.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
+
 export const eliminarTarea= (idTarea) => {
   return async (dispatch) => {
     //console.log("soy el data", JSON.stringify(data))
@@ -1543,6 +1712,16 @@ export const actualizarMeta= (data) => {
   };
 };
 
+/**
+ * @description Elimina un proyecto del sistema.
+ * Envía una solicitud DELETE al servidor con el ID del proyecto.
+ * 
+ * @route DELETE /eliminar/proyecto/:idProyecto
+ * @param {string} idProyecto - ID del proyecto a eliminar.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
+
 export const eliminarProyecto= (idProyecto) => {
   return async (dispatch) => {
     //console.log("soy el data", JSON.stringify(data))
@@ -1562,6 +1741,16 @@ export const eliminarProyecto= (idProyecto) => {
       });
   };
 };
+
+/**
+ * @description Actualiza los datos de un proyecto existente.
+ * Envía una solicitud PUT al servidor con los datos actualizados del proyecto.
+ * 
+ * @route PUT /actualizar/proyecto
+ * @param {Object} data - Objeto con los datos actualizados del proyecto.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
 
 export const actualizarProjecto= (data) => {
   return async (dispatch) => {
@@ -1585,6 +1774,16 @@ export const actualizarProjecto= (data) => {
   };
 };
 
+/**
+ * @description Elimina un líder del sistema.
+ * Envía una solicitud DELETE al servidor con el ID del líder.
+ * 
+ * @route DELETE /eliminar/lider/:idLider
+ * @param {string} idLider - ID del líder a eliminar.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
+
 export const eliminarLider= (idLider) => {
   return async (dispatch) => {
     //console.log("soy el data", JSON.stringify(data))
@@ -1604,6 +1803,16 @@ export const eliminarLider= (idLider) => {
       });
   };
 };
+
+/**
+ * @description Actualiza la información de un líder.
+ * Envía una solicitud PUT al servidor con los datos actualizados.
+ * 
+ * @route PUT /actualizar/lider
+ * @param {Object} data - Objeto con los datos actualizados del líder.
+ * @returns {Promise<void>} - Notifica el éxito o el error en la operación.
+ * @throws {Error} Si ocurre un error en la solicitud HTTP.
+ */
 
 export const actualizarLider= (data) => {
   return async (dispatch) => {
